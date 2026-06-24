@@ -3,1173 +3,467 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVACODE | AI Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #0f0f18;
-            --text-primary: #ffffff;
-            --text-secondary: #8b8b9e;
-            --accent-primary: #a855f7;
-            --accent-secondary: #7c3aed;
-            --accent-glow: #c084fc;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    <title>NOVACODE | AI Developer Portfolio — Telegram-боты, лендинги, AI</title>
+    <meta name="description" content="NOVACODE — портфолио AI-разработчика. Telegram-боты, лендинги под ключ, AI-генераторы.">
 
-        /* Animated Background */
-        .bg-effects {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        #particles-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-        }
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.4;
-            animation: floatOrb 20s ease-in-out infinite;
-        }
-        .glow-orb-1 {
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
-            top: -400px; right: -200px;
-        }
-        .glow-orb-2 {
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
-            bottom: -200px; left: -200px;
-            animation-delay: -10s;
-        }
-        .glow-orb-3 {
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            top: 40%; left: 30%;
-            animation-delay: -5s;
-            opacity: 0.2;
-        }
-        @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-
-        /* Section Animation */
-        .section {
-            position: relative;
-            z-index: 10;
-            padding: 120px 20px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 20px 40px;
-            background: rgba(10, 10, 15, 0.7);
-            backdrop-filter: blur(30px);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, var(--accent-primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 36px;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s;
-            position: relative;
-            padding: 8px 0;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 0; height: 2px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-glow));
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .nav-btn {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: #fff;
-            padding: 12px 26px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        .nav-btn:hover::before {
-            left: 100%;
-        }
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4);
-        }
-        
-        /* Burger Menu */
-        .burger {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 10px;
-        }
-        .burger span {
-            width: 26px; height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s;
-            border-radius: 2px;
-        }
-        .burger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-        .burger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .burger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 120px;
-            position: relative;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 84px);
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-            line-height: 1.1;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, #fff 0%, var(--accent-primary) 30%, var(--accent-glow) 60%, var(--accent-primary) 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 4s linear infinite;
-        }
-        @keyframes shimmer {
-            to { background-position: 200% center; }
-        }
-        .hero-subtitle {
-            font-size: clamp(18px, 2.5vw, 22px);
-            color: var(--text-secondary);
-            margin-bottom: 48px;
-            font-weight: 400;
-            max-width: 540px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 18px 42px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: #fff;
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent-glow), var(--accent-primary));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .btn-primary:hover::after {
-            opacity: 1;
-        }
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-        .btn-secondary:hover {
-            border-color: var(--accent-primary);
-            background: rgba(168, 85, 247, 0.1);
-            transform: translateY(-4px);
-        }
-        
-        /* Floating Shapes */
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .shape {
-            position: absolute;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            animation: floatShape 25s ease-in-out infinite;
-        }
-        .shape-1 {
-            width: 100px; height: 100px;
-            border-radius: 30%;
-            top: 15%; left: 8%;
-            animation-delay: 0s;
-        }
-        .shape-2 {
-            width: 70px; height: 70px;
-            top: 25%; right: 12%;
-            animation-delay: -8s;
-            transform: rotate(45deg);
-            border-radius: 20%;
-        }
-        .shape-3 {
-            width: 120px; height: 120px;
-            border-radius: 40%;
-            bottom: 20%; left: 15%;
-            animation-delay: -15s;
-        }
-        .shape-4 {
-            width: 60px; height: 60px;
-            bottom: 25%; right: 8%;
-            animation-delay: -20s;
-            transform: rotate(45deg);
-            border-radius: 50%;
-        }
-        @keyframes floatShape {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-            50% { transform: translateY(-40px) rotate(180deg); opacity: 0.7; }
-        }
-
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-        .section-header h2 {
-            font-size: clamp(36px, 5vw, 52px);
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-        .section-header h2 .gradient {
-            background: linear-gradient(135deg, #fff, var(--accent-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 18px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Glass Card */
-        .glass-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-            backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 44px;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .glass-card:hover::before {
-            opacity: 1;
-        }
-        .glass-card:hover {
-            transform: translateY(-12px);
-            border-color: rgba(168, 85, 247, 0.3);
-            box-shadow: 0 30px 70px rgba(168, 85, 247, 0.15);
-        }
-
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 28px;
-        }
-        .service-card {
-            text-align: center;
-        }
-        .service-icon {
-            width: 88px; height: 88px;
-            margin: 0 auto 28px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(124, 58, 237, 0.15));
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            position: relative;
-        }
-        .service-icon::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 26px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-glow));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .service-card:hover .service-icon::after {
-            opacity: 0.5;
-        }
-        .service-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .service-card p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.75;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
-            gap: 36px;
-        }
-        .project-card {
-            overflow: hidden;
-        }
-        .project-image {
-            height: 280px;
-            background: linear-gradient(135deg, #15151f, #0d0d14);
-            border-radius: 20px;
-            margin-bottom: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .project-image::before {
-            content: '';
-            position: absolute;
-            width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent, var(--accent-primary), transparent);
-            animation: rotate 12s linear infinite;
-            opacity: 0.15;
-        }
-        @keyframes rotate {
-            to { transform: rotate(360deg); }
-        }
-        .project-image img {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-        .project-image .placeholder {
-            position: relative;
-            z-index: 1;
-            color: var(--text-secondary);
-            font-size: 14px;
-            background: rgba(0,0,0,0.6);
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-        .project-card h3 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 14px;
-        }
-        .project-card p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        .project-card ul {
-            margin: 0 0 20px 0;
-            padding-left: 22px;
-            color: #d4d4d8;
-            line-height: 2;
-        }
-        .project-card ul li {
-            margin-bottom: 4px;
-        }
-        .project-info {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 12px;
-            line-height: 1.6;
-        }
-        .project-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .project-tag {
-            background: rgba(168, 85, 247, 0.12);
-            color: var(--accent-glow);
-            padding: 8px 18px;
-            border-radius: 24px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-        }
-        .project-price {
-            margin-top: 20px;
-            padding: 14px 24px;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(124, 58, 237, 0.1));
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            border-radius: 16px;
-            color: var(--accent-glow);
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: inline-block;
-        }
-        .project-cta {
-            margin-top: 18px;
-            display: inline-block;
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-left: 15px;
-        }
-
-        /* Reviews */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 28px;
-        }
-        .review-card {
-            position: relative;
-        }
-        .review-stars {
-            color: var(--accent-glow);
-            font-size: 20px;
-            margin-bottom: 22px;
-            letter-spacing: 4px;
-        }
-        .review-text {
-            font-size: 16px;
-            line-height: 1.85;
-            margin-bottom: 28px;
-            color: #d4d4d8;
-            font-style: italic;
-        }
-        .review-author {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .review-avatar {
-            width: 54px; height: 54px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 20px;
-            color: #fff;
-        }
-        .review-info h4 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .review-info span {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        /* Contact */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-        .contact-info h3 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 22px;
-        }
-        .contact-info p {
-            color: var(--text-secondary);
-            font-size: 17px;
-            margin-bottom: 36px;
-            line-height: 1.75;
-        }
-        .telegram-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: #fff;
-            padding: 20px 44px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 18px;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-bottom: 24px;
-        }
-        .telegram-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5);
-        }
-        
-        .contact-phone {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--glass-border);
-            padding: 16px 28px;
-            border-radius: 50px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        .contact-phone:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(168, 85, 247, 0.3);
-        }
-        .contact-phone svg {
-            color: var(--accent-primary);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 20px 26px;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--text-secondary);
-        }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
-        }
-        .form-group textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-        .submit-btn {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: #fff;
-            padding: 20px 44px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 17px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .submit-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.5);
-        }
-        .submit-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        /* Footer */
-        footer {
-            position: relative;
-            z-index: 10;
-            padding: 50px 40px;
-            border-top: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 10, 15, 0.6);
-        }
-        .footer-copy {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-        .footer-socials {
-            display: flex;
-            gap: 16px;
-        }
-        .footer-socials a {
-            width: 48px; height: 48px;
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 20px;
-        }
-        .footer-socials a:hover {
-            border-color: var(--accent-primary);
-            color: var(--accent-primary);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav { padding: 16px 20px; }
-            .nav-links {
-                position: fixed;
-                top: 0; right: -100%;
-                width: 75%;
-                height: 100vh;
-                background: rgba(10, 10, 15, 0.98);
-                backdrop-filter: blur(30px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-            .nav-links.active { right: 0; }
-            .burger { display: flex; }
-            .nav-btn { display: none; }
-            .hero h1 { letter-spacing: -1px; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .contact-wrapper { grid-template-columns: 1fr; }
-            footer { flex-direction: column; gap: 24px; text-align: center; padding: 36px 20px; }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-effects">
-        <div class="glow-orb glow-orb-1"></div>
-        <div class="glow-orb glow-orb-2"></div>
-        <div class="glow-orb glow-orb-3"></div>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
     </div>
-    <canvas id="particles-canvas"></canvas>
 
     <!-- Navigation -->
-    <nav>
-        <div class="logo">NOVACODE</div>
-        <ul class="nav-links">
-            <li><a href="#hero">Главная</a></li>
-            <li><a href="#services">Услуги</a></li>
-            <li><a href="#projects">Проекты</a></li>
-            <li><a href="#reviews">Отзывы</a></li>
-            <li><a href="#contact">Контакты</a></li>
-        </ul>
-        <a href="https://t.me/n0vacode" target="_blank" class="nav-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.1.154.234.17.331.015.099.034.324.019.5z"/>
-            </svg>
-            Связаться
-        </a>
-        <div class="burger" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active');">
-            <span></span>
-            <span></span>
-            <span></span>
+    <nav class="nav" id="nav">
+        <div class="container nav__inner">
+            <a href="#hero" class="logo">
+                <span class="logo__brackets">&lt;</span>
+                <span class="logo__text" data-i18n="brand">NOVACODE</span>
+                <span class="logo__brackets">/&gt;</span>
+            </a>
+            <ul class="nav__links">
+                <li><a href="#services" data-i18n="nav.services">Услуги</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">Проекты</a></li>
+                <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                <li><a href="#reviews" data-i18n="nav.reviews">Отзывы</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Контакты</a></li>
+            </ul>
+            <div class="nav__actions">
+                <div class="lang-switch" id="langSwitch">
+                    <button class="lang-switch__btn lang-switch__btn--active" data-lang="ru">RU</button>
+                    <button class="lang-switch__btn" data-lang="en">EN</button>
+                </div>
+                <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="nav__cta">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.1.154.234.17.331.015.099.034.324.019.5z"/></svg>
+                    <span data-i18n="nav.cta">Связаться</span>
+                </a>
+                <button class="burger" id="burger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services" data-i18n="nav.services">Услуги</a>
+            <a href="#projects" data-i18n="nav.projects">Проекты</a>
+            <a href="#faq" data-i18n="nav.faq">FAQ</a>
+            <a href="#reviews" data-i18n="nav.reviews">Отзывы</a>
+            <a href="#contact" data-i18n="nav.contact">Контакты</a>
+            <a href="https://t.me/n0vacode" class="mobile-menu__cta" data-i18n="nav.cta">Связаться</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="section hero" id="hero">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-        </div>
-        <div class="hero-content">
-            <h1>Создаю <span class="gradient">AI-инструменты</span></h1>
-            <p class="hero-subtitle">Которые приносят деньги вашему бизнесу. Телеграм-боты, генераторы контента и автоматизация. Разработка под ключ за дни.</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">Смотреть проекты</a>
-                <a href="#contact" class="btn btn-secondary">Обсудить проект</a>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="container hero__container">
+            <div class="hero__badge" data-aos="fade-down">
+                <span class="hero__badge-dot"></span>
+                <span data-i18n="hero.badge">Открыт для проектов · 2025</span>
             </div>
+            <h1 class="hero__title" data-aos="fade-up">
+                <span data-i18n="hero.title1">Превращаю идеи</span>
+                <span class="hero__gradient" data-i18n="hero.title2">в AI-продукты</span>
+                <br>
+                <span data-i18n="hero.title3">за дни, не месяцы</span>
+            </h1>
+            <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="hero.subtitle">
+                Telegram-боты с AI, лендинги под ключ, генераторы контента для маркетплейсов. Полный цикл: от идеи до запуска.
+            </p>
+            <div class="hero__buttons" data-aos="fade-up" data-aos-delay="200">
+                <a href="#projects" class="btn btn--primary" data-ym="hero_cta_projects">
+                    <span data-i18n="hero.cta1">Смотреть кейсы</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="btn btn--cta" data-ym="hero_cta_telegram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.1.154.234.17.331.015.099.034.324.019.5z"/></svg>
+                    <span data-i18n="hero.cta2">Написать в Telegram</span>
+                </a>
+            </div>
+            <div class="hero__stats" data-aos="fade-up" data-aos-delay="300">
+                <div class="hero__stat">
+                    <div class="hero__stat-num">15+</div>
+                    <div class="hero__stat-label" data-i18n="hero.stat1Label">проектов сдано</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="hero__stat-num">100%</div>
+                    <div class="hero__stat-label" data-i18n="hero.stat2Label">довольных клиентов</div>
+                </div>
+                <div class="hero__stat">
+                    <div class="hero__stat-num">5 дней</div>
+                    <div class="hero__stat-label" data-i18n="hero.stat3Label">средний срок</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero__scroll" aria-hidden="true">
+            <span data-i18n="hero.scroll">Scroll</span>
+            <div class="hero__scroll-line"></div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section class="section" id="services">
         <div class="container">
-            <div class="section-header">
-                <h2>Превращаю <span class="gradient">рутину в автоматизацию</span></h2>
-                <p>Создаю интеллектуальные решения для бизнеса</p>
+            <div class="section__head">
+                <span class="eyebrow" data-i18n="services.eyebrow">// Что я делаю</span>
+                <h2 class="section__title" data-i18n="services.title">Превращаю рутину<br>в <span class="text-accent">автоматизацию</span></h2>
+                <p class="section__lead" data-i18n="services.lead">Создаю интеллектуальные решения для бизнеса — от лендингов до сложных ботов с AI</p>
             </div>
             <div class="services-grid">
-                <div class="glass-card service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI-боты для бизнеса</h3>
-                    <p>Запись клиентов, поддержка 24/7, интеграция с Google Sheets. Замена менеджера в Telegram и WhatsApp.</p>
-                </div>
-                <div class="glass-card service-card">
-                    <div class="service-icon">🛒</div>
-                    <h3>Генераторы контента</h3>
-                    <p>Создание описаний, названий и SEO-ключей для Wildberries и Ozon за секунды. Десктопные приложения с AI.</p>
-                </div>
-                <div class="glass-card service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Умная автоматизация</h3>
-                    <p>Парсинг данных, отчёты в Excel, AI-ответы на отзывы. Всё, что отнимает часы — делает скрипт.</p>
-                </div>
+                <article class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/></svg>
+                    </div>
+                    <h3 class="service-card__title" data-i18n="services.s1Title">AI-боты для бизнеса</h3>
+                    <p class="service-card__text" data-i18n="services.s1Text">Запись клиентов, поддержка 24/7, интеграция с Google Sheets и CRM. Замена менеджера в Telegram и WhatsApp.</p>
+                    <div class="service-card__tags"><span>Telegram</span><span>WhatsApp</span><span>aiogram</span></div>
+                </article>
+                <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <h3 class="service-card__title" data-i18n="services.s2Title">Лендинги под ключ</h3>
+                    <p class="service-card__text" data-i18n="services.s2Text">Премиум-сайты с анимациями, адаптивом, мультиязычностью. От дизайна до публикации за 5-7 дней.</p>
+                    <div class="service-card__tags"><span>HTML/CSS</span><span>JS</span><span>i18n</span></div>
+                </article>
+                <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3 class="service-card__title" data-i18n="services.s3Title">AI-генераторы контента</h3>
+                    <p class="service-card__text" data-i18n="services.s3Text">Десктопные приложения для маркетплейсов. Описания, SEO, ответы на отзывы — за секунды.</p>
+                    <div class="service-card__tags"><span>AI</span><span>Python</span><span>Desktop</span></div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section class="section" id="projects">
         <div class="container">
-            <div class="section-header">
-                <h2>Избранные <span class="gradient">проекты</span></h2>
-                <p>Готовые решения для бизнеса</p>
+            <div class="section__head">
+                <span class="eyebrow" data-i18n="projects.eyebrow">// Портфолио</span>
+                <h2 class="section__title" data-i18n="projects.title">Избранные <span class="text-accent">кейсы</span></h2>
+                <p class="section__lead" data-i18n="projects.lead">Готовые решения для бизнеса — от Telegram-ботов до премиум-сайтов</p>
             </div>
             <div class="projects-grid">
-                <!-- Project 1: Барбершоп -->
-                <div class="glass-card project-card">
-                    <div class="project-image">
-                        <img src="barb2.png" alt="Telegram бот для барбершопа" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                        <span class="placeholder" style="display:none">Фото проекта</span>
-                    </div>
-                    <h3>Telegram-бот для барбершопа</h3>
-                    <p>Полностью готовый бот для записи клиентов с использованием aiogram 3.x и Google Sheets.</p>
-                    <ul>
-                        <li>✓ Запись клиентов 24/7</li>
-                        <li>✓ Интеграция с Google Sheets</li>
-                        <li>✓ FSM (машина состояний)</li>
-                        <li>✓ Календарь без внешних библиотек</li>
-                        <li>✓ Админ-панель</li>
-                    </ul>
-                    <p class="project-info">Код разделён по модулям, снабжён комментариями на русском языке. Под ключ.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Telegram Bot</span>
-                        <span class="project-tag">aiogram 3.x</span>
-                        <span class="project-tag">Google Sheets</span>
-                    </div>
-                    <div class="project-price">3 500 ₽ — под ключ</div>
-                </div>
 
-                <!-- Project 2: AI Generator -->
-                <div class="glass-card project-card">
-                    <div class="project-image">
-                        <img src="ai_generator_wb_ozon_ad.png" alt="AI генератор для маркетплейсов" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                        <span class="placeholder" style="display:none">Скриншот проекта</span>
+                <!-- Project 1 -->
+                <article class="project-card" data-aos="fade-up">
+                    <div class="project-card__visual">
+                        <img src="img/barb2.png" alt="Telegram бот" onerror="this.outerHTML='<div class=\'project-card__placeholder\'>📱</div>'">
+                        <div class="project-card__status"><span class="status-dot"></span><span data-i18n="projects.p1Status">Готов к продаже</span></div>
                     </div>
-                    <h3>AI-генератор для маркетплейсов</h3>
-                    <p>Продаёте на Wildberries или Ozon? Тратите часы на описания? Готовый AI-инструмент, который за 5 секунд создаёт:</p>
-                    <ul>
-                        <li>✓ Продающее название товара</li>
-                        <li>✓ Полное SEO-описание</li>
-                        <li>✓ Характеристики списком</li>
-                        <li>✓ Ключевые слова</li>
-                        <li>✓ Ответы на отзывы покупателей</li>
-                    </ul>
-                    <p class="project-info">Работает на вашем компьютере (Windows). Безлимитно, без подписок. Настраиваю под ваш магазин за вечер.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">AI</span>
-                        <span class="project-tag">Windows App</span>
-                        <span class="project-tag">WB / Ozon</span>
+                    <div class="project-card__body">
+                        <div class="project-card__meta"><span data-i18n="projects.p1Meta1">Telegram Bot</span><span>·</span><span>aiogram 3.x</span></div>
+                        <h3 class="project-card__title" data-i18n="projects.p1Title">Telegram-бот для барбершопа</h3>
+                        <p class="project-card__text" data-i18n="projects.p1Text">Полностью готовый бот для записи клиентов. Замена администратора в нерабочие часы.</p>
+                        <ul class="project-card__features">
+                            <li data-i18n="projects.p1F1">Запись клиентов 24/7</li>
+                            <li data-i18n="projects.p1F2">Интеграция с Google Sheets</li>
+                            <li data-i18n="projects.p1F3">FSM (машина состояний)</li>
+                            <li data-i18n="projects.p1F4">Календарь без внешних библиотек</li>
+                            <li data-i18n="projects.p1F5">Админ-панель</li>
+                        </ul>
+                        <div class="project-card__footer">
+                            <div>
+                                <div class="project-card__price">3 500 ₽</div>
+                                <span class="project-card__price-label" data-i18n="projects.priceLabel">под ключ</span>
+                            </div>
+                            <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="project-card__btn" data-ym="project_barbershop">
+                                <span data-i18n="projects.buyBtn">Купить</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
                     </div>
-                    <div class="project-price">15 000 ₽ — разово</div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 50px; color: var(--text-secondary);">
-                <p>Ещё больше проектов в моём портфолио. Свяжитесь, чтобы увидеть релевантные кейсы.</p>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card__visual">
+                        <img src="img/ai_generator_wb_ozon_ad.png" alt="AI генератор" onerror="this.outerHTML='<div class=\'project-card__placeholder\'>🤖</div>'">
+                        <div class="project-card__status"><span class="status-dot"></span><span data-i18n="projects.p2Status">Готов к продаже</span></div>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta"><span data-i18n="projects.p2Meta1">Desktop App</span><span>·</span><span>AI / Python</span></div>
+                        <h3 class="project-card__title" data-i18n="projects.p2Title">AI-генератор для маркетплейсов</h3>
+                        <p class="project-card__text" data-i18n="projects.p2Text">Продаёте на Wildberries или Ozon? Готовый AI-инструмент, который за 5 секунд создаёт:</p>
+                        <ul class="project-card__features">
+                            <li data-i18n="projects.p2F1">Продающее название товара</li>
+                            <li data-i18n="projects.p2F2">Полное SEO-описание</li>
+                            <li data-i18n="projects.p2F3">Характеристики списком</li>
+                            <li data-i18n="projects.p2F4">Ключевые слова</li>
+                            <li data-i18n="projects.p2F5">Ответы на отзывы покупателей</li>
+                        </ul>
+                        <div class="project-card__footer">
+                            <div>
+                                <div class="project-card__price">15 000 ₽</div>
+                                <span class="project-card__price-label" data-i18n="projects.priceLabel">разово</span>
+                            </div>
+                            <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="project-card__btn" data-ym="project_ai_generator">
+                                <span data-i18n="projects.buyBtn">Купить</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 — FEATURED с превью-скриншотом -->
+                <article class="project-card project-card--featured" data-aos="fade-up">
+                    <div class="project-card__visual project-card__visual--wide">
+                        <img src="img/stroymaster-preview.png" 
+                             alt="Превью сайта Ремонт квартир" 
+                             loading="lazy" 
+                             style="width:100%; height:100%; object-fit:cover; object-position:top;">
+                        <div class="project-card__status project-card__status--live">
+                            <span class="status-dot status-dot--live"></span>
+                            <span data-i18n="projects.p3Status">Live</span>
+                        </div>
+                        <a href="https://n0vacode.vercel.app/" target="_blank" rel="noopener" class="project-card__live-link" data-ym="project_stroymaster_live">
+                            <span data-i18n="projects.p3Link">Открыть в новой вкладке</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        </a>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span data-i18n="projects.p3Meta1">Landing Page</span><span>·</span>
+                            <span data-i18n="projects.p3Meta2">Премиум</span><span>·</span>
+                            <span>HTML/CSS/JS</span>
+                        </div>
+                        <h3 class="project-card__title" data-i18n="projects.p3Title">Лендинг «Ремонт квартир под ключ»</h3>
+                        <p class="project-card__text" data-i18n="projects.p3Text">Премиум-лендинг с интерактивным калькулятором стоимости, мультиязычностью и реальными фото интерьеров.</p>
+                        <div class="project-card__highlights">
+                            <div class="highlight"><div class="highlight__num">5</div><div class="highlight__label" data-i18n="projects.p3H1Label">блоков</div></div>
+                            <div class="highlight"><div class="highlight__num">2</div><div class="highlight__label" data-i18n="projects.p3H2Label">языка</div></div>
+                            <div class="highlight"><div class="highlight__num">100%</div><div class="highlight__label" data-i18n="projects.p3H3Label">адаптив</div></div>
+                            <div class="highlight"><div class="highlight__num">JS</div><div class="highlight__label" data-i18n="projects.p3H4Label">калькулятор</div></div>
+                        </div>
+                        <ul class="project-card__features">
+                            <li data-i18n="projects.p3F1">Интерактивный калькулятор цены за м²</li>
+                            <li data-i18n="projects.p3F2">Переключатель RU/EN с автосохранением</li>
+                            <li data-i18n="projects.p3F3">Реальные фото интерьеров с анимациями</li>
+                            <li data-i18n="projects.p3F4">Маска телефона + форма заявки</li>
+                            <li data-i18n="projects.p3F5">Mobile-first, адаптив 480/768/1024</li>
+                        </ul>
+                        <div class="project-card__footer">
+                            <div>
+                                <div class="project-card__price project-card__price--gold" data-i18n="projects.p3Price">По запросу</div>
+                                <span class="project-card__price-label" data-i18n="projects.p3PriceLabel">индивидуальный кейс</span>
+                            </div>
+                            <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="project-card__btn project-card__btn--cta" data-ym="project_stroymaster_order">
+                                <span data-i18n="projects.orderBtn">Заказать такой же</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <!-- Reviews Section -->
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section__head">
+                <span class="eyebrow" data-i18n="faq.eyebrow">// FAQ</span>
+                <h2 class="section__title" data-i18n="faq.title">Частые <span class="text-accent">вопросы</span></h2>
+                <p class="section__lead" data-i18n="faq.lead">Ответы на то, что спрашивают чаще всего</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-item__question">
+                        <span data-i18n="faq.q1">Сколько стоит разработка Telegram-бота?</span>
+                        <span class="faq-item__icon"></span>
+                    </summary>
+                    <div class="faq-item__answer" data-i18n="faq.a1">Готовые боты — от 3 500 ₽. Уникальный под вашу задачу — от 15 000 ₽. Точная цена после обсуждения ТЗ.</div>
+                </details>
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-item__question">
+                        <span data-i18n="faq.q2">Какие сроки разработки лендинга?</span>
+                        <span class="faq-item__icon"></span>
+                    </summary>
+                    <div class="faq-item__answer" data-i18n="faq.a2">Простой лендинг — 3-5 дней. Премиум — 5-10 дней. Срочные проекты обсуждаются индивидуально.</div>
+                </details>
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-item__question">
+                        <span data-i18n="faq.q3">Можно ли заказать доработку готового бота?</span>
+                        <span class="faq-item__icon"></span>
+                    </summary>
+                    <div class="faq-item__answer" data-i18n="faq.a3">Да. Доработка любой сложности: новые функции, интеграции, дизайн. Цена — после анализа.</div>
+                </details>
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-item__question">
+                        <span data-i18n="faq.q4">Как происходит оплата?</span>
+                        <span class="faq-item__icon"></span>
+                    </summary>
+                    <div class="faq-item__answer" data-i18n="faq.a4">50% до начала, 50% после сдачи. Для небольших проектов — 100% предоплата. Принимаю переводы, USDT, счета для ИП/ООО.</div>
+                </details>
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-item__question">
+                        <span data-i18n="faq.q5">Есть ли поддержка после сдачи?</span>
+                        <span class="faq-item__icon"></span>
+                    </summary>
+                    <div class="faq-item__answer" data-i18n="faq.a5">14 дней бесплатной поддержки. Дальше — по договорённости, от 2 000 ₽/мес.</div>
+                </details>
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-item__question">
+                        <span data-i18n="faq.q6">Покажете примеры перед заказом?</span>
+                        <span class="faq-item__icon"></span>
+                    </summary>
+                    <div class="faq-item__answer" data-i18n="faq.a6">Конечно. В разделе «Проекты» выше — 3 кейса с подробным описанием. Под вашу нишу найду релевантные примеры.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
     <section class="section" id="reviews">
         <div class="container">
-            <div class="section-header">
-                <h2>Что говорят <span class="gradient">клиенты</span></h2>
-                <p>Отзывы реальных людей</p>
+            <div class="section__head">
+                <span class="eyebrow" data-i18n="reviews.eyebrow">// Отзывы</span>
+                <h2 class="section__title" data-i18n="reviews.title">Что говорят <span class="text-accent">клиенты</span></h2>
+                <p class="section__lead" data-i18n="reviews.lead">Отзывы реальных людей</p>
             </div>
             <div class="reviews-grid">
-                <div class="glass-card review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Бот окупился за неделю. Клиенты перестали названивать ночью."</p>
-                    <div class="review-author">
-                        <div class="review-avatar">Б</div>
-                        <div class="review-info">
-                            <h4>Владелец барбершопа</h4>
-                            <span>Москва</span>
-                        </div>
+                <article class="review-card" data-aos="fade-up">
+                    <div class="review-card__stars">★★★★★</div>
+                    <p class="review-card__text" data-i18n="reviews.r1Text">"Бот окупился за неделю. Клиенты перестали названивать ночью."</p>
+                    <div class="review-card__author">
+                        <div class="review-card__avatar">Б</div>
+                        <div><div class="review-card__name" data-i18n="reviews.r1Name">Владелец барбершопа</div><div class="review-card__city" data-i18n="reviews.r1City">Москва</div></div>
                     </div>
-                </div>
-                <div class="glass-card review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Генератор сэкономил нам 20 часов в месяц на описаниях. Работает быстрее копирайтера."</p>
-                    <div class="review-author">
-                        <div class="review-avatar">О</div>
-                        <div class="review-info">
-                            <h4>Продавец на Ozon</h4>
-                            <span>Санкт-Петербург</span>
-                        </div>
+                </article>
+                <article class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-card__stars">★★★★★</div>
+                    <p class="review-card__text" data-i18n="reviews.r2Text">"Генератор сэкономил нам 20 часов в месяц на описаниях."</p>
+                    <div class="review-card__author">
+                        <div class="review-card__avatar">О</div>
+                        <div><div class="review-card__name" data-i18n="reviews.r2Name">Продавец на Ozon</div><div class="review-card__city" data-i18n="reviews.r2City">Санкт-Петербург</div></div>
                     </div>
-                </div>
-                <div class="glass-card review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Оперативно, дёшево и с душой. Теперь только к нему за автоматизацией."</p>
-                    <div class="review-author">
-                        <div class="review-avatar">Р</div>
-                        <div class="review-info">
-                            <h4>Руководитель отдела продаж</h4>
-                            <span>Екатеринбург</span>
-                        </div>
+                </article>
+                <article class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-card__stars">★★★★★</div>
+                    <p class="review-card__text" data-i18n="reviews.r3Text">"Оперативно, дёшево и с душой. Теперь только к нему."</p>
+                    <div class="review-card__author">
+                        <div class="review-card__avatar">Р</div>
+                        <div><div class="review-card__name" data-i18n="reviews.r3Name">Руководитель отдела</div><div class="review-card__city" data-i18n="reviews.r3City">Екатеринбург</div></div>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
+    <!-- Contact -->
+    <section class="section section--cta" id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Обсудим <span class="gradient">ваш проект?</span></h2>
-                <p>Напишите мне в Telegram</p>
-            </div>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Давайте обсудим задачу</h3>
-                    <p>Отвечаю в течение дня. Покажу похожие кейсы, предложу решение под ваши цели.</p>
-                    
-                    <a href="https://t.me/n0vacode" target="_blank" class="telegram-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.1.154.234.17.331.015.099.034.324.019.5z"/>
-                        </svg>
-                        Написать в Telegram
-                    </a>
-                    
-                    <a href="tel:+79105650340" class="contact-phone">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        +7 (910) 565-03-40
-                    </a>
+            <div class="cta-wrapper">
+                <div class="cta-info">
+                    <span class="eyebrow" data-i18n="contact.eyebrow">// Контакты</span>
+                    <h2 class="section__title" data-i18n="contact.title">Обсудим <span class="text-accent">ваш проект?</span></h2>
+                    <p class="section__lead" data-i18n="contact.lead">Отвечаю в течение дня. Покажу кейсы и предложу решение.</p>
+                    <div class="cta-contacts">
+                        <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="cta-contact cta-contact--primary" data-ym="contact_telegram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.1.154.234.17.331.015.099.034.324.019.5z"/></svg>
+                            <div><div class="cta-contact__label" data-i18n="contact.tgLabel">Написать в Telegram</div><div class="cta-contact__value">@n0vacode</div></div>
+                        </a>
+                        <a href="tel:+79105650340" class="cta-contact" data-ym="contact_phone">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <div><div class="cta-contact__label" data-i18n="contact.phoneLabel">Позвонить</div><div class="cta-contact__value">+7 (910) 565-03-40</div></div>
+                        </a>
+                        <a href="mailto:stepchikcrypto@gmail.com" class="cta-contact" data-ym="contact_email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <div><div class="cta-contact__label" data-i18n="contact.emailLabel">Email</div><div class="cta-contact__value">stepchikcrypto@gmail.com</div></div>
+                        </a>
+                    </div>
                 </div>
-                
-                <!-- Formspree Form -->
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xnjknbdw" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="Имя" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="Телефон" placeholder="Ваш телефон" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="Сообщение" placeholder="Расскажите о вашей задаче..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" id="submit-btn">Отправить заявку</button>
+                <form class="cta-form" id="contactForm" action="https://formspree.io/f/xnjknbdw" method="POST">
+                    <h3 class="cta-form__title" data-i18n="contact.formTitle">Или оставьте заявку</h3>
+                    <div class="form-group"><label data-i18n="contact.formName">Имя</label><input type="text" name="name" required placeholder="Иван"></div>
+                    <div class="form-group"><label data-i18n="contact.formContact">Телефон или Telegram</label><input type="text" name="contact" required placeholder="+7 или @username"></div>
+                    <div class="form-group"><label data-i18n="contact.formMessage">О проекте</label><textarea name="message" required placeholder="Telegram-бот / лендинг / AI-генератор..."></textarea></div>
+                    <button type="submit" class="btn btn--cta btn--block" id="submitBtn" data-ym="form_submit">
+                        <span data-i18n="contact.formSubmit">Отправить заявку</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </button>
+                    <p class="form-note" data-i18n="contact.formNote">Отвечу в течение дня · Без спама</p>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p class="footer-copy">© 2025 NOVACODE. Все права защищены.</p>
-        <div class="footer-socials">
-            <a href="https://t.me/n0vacode" target="_blank" title="Telegram">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.1.154.234.17.331.015.099.034.324.019.5z"/>
-                </svg>
-            </a>
-            <a href="https://github.com/novacode" target="_blank" title="GitHub">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__col">
+                <a href="#hero" class="logo logo--footer">
+                    <span class="logo__brackets">&lt;</span>
+                    <span class="logo__text" data-i18n="brand">NOVACODE</span>
+                    <span class="logo__brackets">/&gt;</span>
+                </a>
+                <p class="footer__about" data-i18n="footer.about">AI-разработка для бизнеса. Telegram-боты, лендинги, автоматизация.</p>
+            </div>
+            <div class="footer__col">
+                <h4 data-i18n="footer.servicesTitle">Услуги</h4>
+                <a href="#services" data-i18n="footer.s1">AI-боты</a>
+                <a href="#services" data-i18n="footer.s2">Лендинги</a>
+                <a href="#services" data-i18n="footer.s3">AI-генераторы</a>
+            </div>
+            <div class="footer__col">
+                <h4 data-i18n="footer.contactTitle">Связь</h4>
+                <a href="https://t.me/n0vacode" target="_blank" rel="noopener">@n0vacode</a>
+                <a href="tel:+79105650340">+7 (910) 565-03-40</a>
+                <a href="mailto:stepchikcrypto@gmail.com">stepchikcrypto@gmail.com</a>
+            </div>
+        </div>
+        <div class="container footer__bottom">
+            <span data-i18n="footer.copy">© 2025 NOVACODE. Все права защищены.</span>
+            <span data-i18n="footer.made">Сделано с ❤ в NOVACODE</span>
         </div>
     </footer>
 
-    <script>
-        // Particles Animation
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.4 + 0.1;
-            }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(168, 85, 247, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-        
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < 70; i++) {
-                particles.push(new Particle());
-            }
-        }
-        
-        function connectParticles() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (dist < 140) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(168, 85, 247, ${0.12 * (1 - dist / 140)})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-        
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-        
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
-        });
-        
-        resizeCanvas();
-        initParticles();
-        animateParticles();
-        
-        // Intersection Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Formspree AJAX submission
-        const form = document.getElementById('contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-        
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            submitBtn.textContent = 'Отправка...';
-            submitBtn.disabled = true;
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    submitBtn.textContent = '✓ Отправлено!';
-                    submitBtn.style.background = '#22c55e';
-                    form.reset();
-                    setTimeout(() => {
-                        submitBtn.textContent = 'Отправить заявку';
-                        submitBtn.disabled = false;
-                        submitBtn.style.background = '';
-                        alert('Спасибо! Я свяжусь с вами в ближайшее время.');
-                    }, 2000);
-                } else {
-                    throw new Error('Error');
-                }
-            } catch (error) {
-                submitBtn.textContent = 'Ошибка';
-                submitBtn.style.background = '#ef4444';
-                setTimeout(() => {
-                    submitBtn.textContent = 'Отправить заявку';
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                }, 2000);
-            }
-        });
-        
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.querySelector('.nav-links').classList.remove('active');
-                    document.querySelector('.burger').classList.remove('active');
-                }
-            });
-        });
-        
-        // Init hero
-        window.addEventListener('load', () => {
-            document.querySelector('.hero').classList.add('visible');
-        });
-    </script>
+    <!-- ==================== EXIT POPUP ==================== -->
+    <div class="exit-popup" id="exitPopup">
+        <div class="exit-popup__backdrop" id="exitPopupBackdrop"></div>
+        <div class="exit-popup__content">
+            <button class="exit-popup__close" id="exitPopupClose" aria-label="Закрыть">×</button>
+            <div class="exit-popup__icon">🎁</div>
+            <h3 class="exit-popup__title" data-i18n="popup.title">Подождите! У меня подарок для вас</h3>
+            <p class="exit-popup__text" data-i18n="popup.text">Получите бесплатную консультацию по вашему проекту + чек-лист «10 ошибок при заказе бота»</p>
+            <form class="exit-popup__form" id="exitPopupForm">
+                <input type="text" name="name" required placeholder="Ваше имя" data-i18n-placeholder="popup.namePlaceholder">
+                <input type="text" name="contact" required placeholder="Telegram или телефон" data-i18n-placeholder="popup.contactPlaceholder">
+                <button type="submit" class="btn btn--cta btn--block" data-ym="popup_submit">
+                    <span data-i18n="popup.cta">Получить подарок</span>
+                </button>
+            </form>
+            <button class="exit-popup__skip" id="exitPopupSkip" data-i18n="popup.skip">Нет, спасибо</button>
+            <p class="exit-popup__note" data-i18n="popup.note">Без спама · Отвечу в течение дня</p>
+        </div>
+    </div>
+
+    <!-- ==================== TELEGRAM WIDGET ==================== -->
+    <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="tg-widget" id="tgWidget" data-ym="tg_widget_click">
+        <span class="tg-widget__pulse"></span>
+        <span class="tg-widget__pulse tg-widget__pulse--delay"></span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.1.154.234.17.331.015.099.034.324.019.5z"/></svg>
+        <span class="tg-widget__tooltip" data-i18n="widget.tooltip">Написать в Telegram</span>
+    </a>
+
+    <!-- ==================== SCROLL TO TOP ==================== -->
+    <button class="scroll-top" id="scrollTop" aria-label="Наверх">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script src="script.js"></script>
 </body>
 </html>
