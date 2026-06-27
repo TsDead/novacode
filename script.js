@@ -104,7 +104,7 @@ const translations = {
     'projects.p4Col1Title': '🤖 Telegram Bot', 'projects.p4Col2Title': '🖥️ Backend',
     'projects.p4F1': '3-click booking', 'projects.p4F2': 'View, edit, cancel', 'projects.p4F3': 'Auto reminders 24h & 2h', 'projects.p4F4': 'FSM 5 states',
     'projects.p4F5': 'Express.js REST API', 'projects.p4F6': 'Google Sheets as DB', 'projects.p4F7': 'Telegram admin notifications', 'projects.p4F8': 'Rate-limit + validation',
-    'projects.p4Price': 'from ₽25,000', 'projects.p4PriceLabel': 'turnkey · 5 days',
+    'projects.p4Price': 'from ₽25,000', 'projects.p4PriceLabel': 'turnkey · 5 days', 'projects.p4DetailBtn': 'Details',
     'faq.eyebrow': '// FAQ',
     'faq.title': 'Frequently asked <span class="text-accent">questions</span>', 'faq.lead': 'Answers to common questions',
     'faq.q1': 'How much does a Telegram bot cost?', 'faq.a1': 'Ready-made — from ₽3,500. Custom — from ₽15,000.',
