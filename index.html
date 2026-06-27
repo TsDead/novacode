@@ -231,13 +231,7 @@
                 <!-- Project 3: Ремонт квартир -->
                 <article class="project-card project-card--featured" data-aos="fade-up">
                     <div class="project-card__visual project-card__visual--wide">
-                        <div class="project-iframe-wrapper">
-                            <div class="project-iframe-loader">
-                                <div class="loader"></div>
-                                <span data-i18n="projects.p3Loading">Загрузка превью...</span>
-                            </div>
-                            <img src="img/stroymaster.jpg" alt="Превью сайта Ремонт квартир" loading="lazy">
-                        </div>
+                        <img src="img/stroymaster-preview.png" alt="Превью сайта Ремонт квартир" loading="lazy">
                         <div class="project-card__status project-card__status--live">
                             <span class="status-dot status-dot--live"></span>
                             <span data-i18n="projects.p3Status">Live</span>
@@ -276,10 +270,10 @@
                     </div>
                 </article>
 
-                <!-- Project 4: BarBot — НОВЫЙ FEATURED -->
-                <article class="project-card project-card--featured project-card--huge" data-aos="fade-up">
-                    <div class="project-card__visual project-card__visual--huge">
-                        <img src="img/barbot-preview.png" alt="BarBot — Telegram-бот для барбершопов" onerror="this.outerHTML='<div class=\'project-card__placeholder project-card__placeholder--huge\'>💈</div>'">
+                <!-- Project 4: BarBot -->
+                <article class="project-card project-card--featured" data-aos="fade-up">
+                    <div class="project-card__visual project-card__visual--wide">
+                        <img src="img/barbot-preview.png" alt="BarBot — Telegram-бот для барбершопов" loading="lazy">
                         <div class="project-card__status project-card__status--live">
                             <span class="status-dot status-dot--live"></span>
                             <span data-i18n="projects.p4Status">Live · Бот работает</span>
@@ -289,58 +283,35 @@
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
                         </a>
                     </div>
-                    <div class="project-card__body project-card__body--huge">
+                    <div class="project-card__body">
                         <div class="project-card__meta">
-                            <span data-i18n="projects.p4Meta1">Full-Stack Project</span>
-                            <span>·</span>
-                            <span data-i18n="projects.p4Meta2">Telegram Bot + Landing + Backend</span>
-                            <span>·</span>
+                            <span data-i18n="projects.p4Meta1">Full-Stack Project</span><span>·</span>
+                            <span data-i18n="projects.p4Meta2">Telegram Bot + Landing + Backend</span><span>·</span>
                             <span>Node.js</span>
                         </div>
                         <h3 class="project-card__title" data-i18n="projects.p4Title">BarBot — SaaS для барбершопов</h3>
                         <p class="project-card__text" data-i18n="projects.p4Text">Полноценный продукт: лендинг с калькулятором тарифов, Telegram-бот для записи, backend на Express с интеграцией Google Sheets и админ-уведомлениями.</p>
-
                         <div class="project-card__highlights">
                             <div class="highlight"><div class="highlight__num">3</div><div class="highlight__label" data-i18n="projects.p4H1Label">тарифа</div></div>
                             <div class="highlight"><div class="highlight__num">5</div><div class="highlight__label" data-i18n="projects.p4H2Label">шагов записи</div></div>
                             <div class="highlight"><div class="highlight__num">24/7</div><div class="highlight__label" data-i18n="projects.p4H3Label">бот онлайн</div></div>
                             <div class="highlight"><div class="highlight__num">100%</div><div class="highlight__label" data-i18n="projects.p4H4Label">автоматизация</div></div>
                         </div>
-
-                        <div class="project-card__columns">
-                            <div>
-                                <h4 class="project-card__sub" data-i18n="projects.p4Col1Title">🤖 Telegram-бот</h4>
-                                <ul class="project-card__features">
-                                    <li data-i18n="projects.p4F1">Запись через 3 клика</li>
-                                    <li data-i18n="projects.p4F2">Просмотр, изменение, отмена</li>
-                                    <li data-i18n="projects.p4F3">Автонапоминания за 24ч и 2ч</li>
-                                    <li data-i18n="projects.p4F4">FSM на 5 состояний</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="project-card__sub" data-i18n="projects.p4Col2Title">🖥️ Backend</h4>
-                                <ul class="project-card__features">
-                                    <li data-i18n="projects.p4F5">Express.js REST API</li>
-                                    <li data-i18n="projects.p4F6">Google Sheets как БД</li>
-                                    <li data-i18n="projects.p4F7">Telegram-уведомления админу</li>
-                                    <li data-i18n="projects.p4F8">Rate-limit + валидация</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="project-card__tech">
-                            <span>Node.js</span><span>Express</span><span>Telegram Bot API</span><span>Google Sheets</span><span>SOCKS5</span><span>HTML/CSS/JS</span>
-                        </div>
-
                         <div class="project-card__footer">
                             <div>
                                 <div class="project-card__price" data-i18n="projects.p4Price">от 25 000 ₽</div>
                                 <span class="project-card__price-label" data-i18n="projects.p4PriceLabel">под ключ · 5 дней</span>
                             </div>
-                            <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="project-card__btn project-card__btn--cta" data-ym="project_barbot_order">
-                                <span data-i18n="projects.orderBtn">Заказать аналог</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                            </a>
+                            <div style="display:flex;gap:10px;">
+                                <a href="barbot.html" class="project-card__btn project-card__btn--cta" data-ym="project_barbot_detail">
+                                    <span data-i18n="projects.p4DetailBtn">Подробнее</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a>
+                                <a href="https://t.me/n0vacode" target="_blank" rel="noopener" class="project-card__btn project-card__btn--cta" data-ym="project_barbot_order">
+                                    <span data-i18n="projects.orderBtn">Заказать аналог</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </article>
