@@ -1,125 +1,78 @@
-🚀 NOVACODE — AI-разработка и автоматизация
-<div align="center"> <img src="https://novacode-nu.vercel.app/img/og-image.png" alt="NOVACODE Portfolio" width="800"> <br><br> <strong>Превращаю идеи в AI-продукты за дни, не месяцы</strong> <br><br> <a href="https://novacode-nu.vercel.app/"><img src="https://img.shields.io/badge/🌐-Портфолио-00E5C7?style=for-the-badge" alt="Portfolio"/></a> <a href="https://t.me/n0vacode"><img src="https://img.shields.io/badge/✈️-Telegram-0088cc?style=for-the-badge" alt="Telegram"/></a> <a href="mailto:stepchikcrypto@gmail.com"><img src="https://img.shields.io/badge/📧-Email-red?style=for-the-badge" alt="Email"/></a> </div>
-👋 Привет! Я Степан
-17 лет · AI-разработчик · Автоматизация · Веб-решения
+🚀 NOVACODE
+<div align="center"> <img src="https://novacode-nu.vercel.app/img/og-image.png" alt="NOVACODE Portfolio" width="800"> <br><br>
+AI-разработка · Автоматизация · Веб-решения
 
-«Я помогаю бизнесам избавиться от рутины с помощью AI, ботов и веб-инструментов. Работаю быстро, качественно, с гарантией.»
+<a href="https://novacode-nu.vercel.app/"><img src="https://img.shields.io/badge/🌐-Портфолио-00E5C7?style=for-the-badge" alt="Portfolio"/></a>
+<a href="https://t.me/n0vacode"><img src="https://img.shields.io/badge/✈️-Telegram-0088cc?style=for-the-badge" alt="Telegram"/></a>
+<a href="mailto:stepchikcrypto@gmail.com"><img src="https://img.shields.io/badge/📧-Email-red?style=for-the-badge" alt="Email"/></a>
+<a href="https://github.com/TsDead"><img src="https://img.shields.io/badge/🐙-GitHub-181717?style=for-the-badge" alt="GitHub"/></a>
 
-🛠 Стек технологий
-Категория	Технологии
-Языки	Python, JavaScript, HTML/CSS
-Боты	aiogram 3.x, Telegram Bot API, VK API
-Веб	WordPress, Elementor, WooCommerce, React (базово)
-Автоматизация	BeautifulSoup, Selenium, PyQt, Pandas
-Базы данных	SQLite, PostgreSQL (базово)
-Инструменты	Git, Docker (базово), REST APIs, Google Sheets API
-📦 Ключевые проекты
-🤖 Telegram-бот для барбершопа
-BarBot — бот для записи клиентов 24/7 с интеграцией Google Sheets.
+</div>
+<div align="center"> <blockquote> <em>«Превращаю идеи в AI-продукты за дни, не месяцы»</em> </blockquote> </div>
+👤 Обо мне
+<div align="center"> <table> <tr> <td><strong>👋 Имя</strong></td> <td>Степан (NOVACODE)</td> </tr> <tr> <td><strong>🎂 Возраст</strong></td> <td>17 лет</td> </tr> <tr> <td><strong>📍 Локация</strong></td> <td>Россия</td> </tr> <tr> <td><strong>💼 Роль</strong></td> <td>AI-разработчик · Automation Specialist</td> </tr> </table> </div>
+Я создаю интеллектуальные инструменты для бизнеса: AI-боты, лендинги, автоматизацию. Моя цель — избавить предпринимателей от рутины и помочь им зарабатывать больше.
 
-✅ Запись клиентов 24/7
-
-✅ FSM (машина состояний)
-
-✅ Календарь без внешних библиотек
-
-✅ Админ-панель
-
-Стек: Python, aiogram 3.x, Google Sheets API
-
-🧠 AI-генератор для маркетплейсов
-Десктопное приложение для Wildberries и Ozon.
-
-✅ Генерация названий и SEO-описаний
-
-✅ Характеристики и ключевые слова
-
-✅ Ответы на отзывы
-
-⚡ Экономия до 20 часов в месяц
-
-Стек: Python, PyQt, OpenAI API / NLP
-
-🌐 Лендинг «Кумиры Северной Пальмиры»
-Премиум-лендинг для арт-галереи с интерактивными голограммами.
-
-✅ Минималистичный дизайн
-
-✅ 3D-эффекты при движении мыши
-
-✅ Адаптив
-
-✅ Интерактивный каталог
-
-Стек: WordPress, Elementor Pro, HTML/CSS/JS
-
-🏗 Другие проекты
-Лендинг для турбазы
-
-Сайт строительной компании «СтройДом»
-
-Квиз-бот для мессенджера MAX
-
-Перенос макета MAÈ на WordPress + WooCommerce
-
-📊 Статистика
+🛠 Технологический стек
 <div align="center">
-15+	100%	5 дней	24/7
+Категория	Технологии
+🐍 Языки	Python · JavaScript · HTML/CSS
+🤖 Боты	aiogram 3.x · Telegram Bot API · VK API
+🌐 Веб	WordPress · Elementor · WooCommerce · React
+⚡ Автоматизация	BeautifulSoup · Selenium · PyQt · Pandas
+🗄️ Базы данных	SQLite · PostgreSQL
+🔧 Инструменты	Git · Docker · REST APIs · Google Sheets API
+</div>
+📦 Избранные проекты
+<div align="center">
+🤖 BarBot — Telegram-бот для барбершопа
+Характеристика	Описание
+Задача	Запись клиентов 24/7
+Стек	Python · aiogram 3.x · Google Sheets API
+Особенности	FSM · Календарь · Админ-панель
+Статус	✅ Готов к продаже
+🧠 AI-генератор для маркетплейсов (WB/Ozon)
+Характеристика	Описание
+Задача	Генерация контента за 5 секунд
+Стек	Python · PyQt · AI/NLP
+Результат	Экономия 20+ часов в месяц
+Статус	✅ Готов к продаже
+🎨 Лендинг «Кумиры Северной Пальмиры»
+Характеристика	Описание
+Задача	Премиум-галерея с 3D-голограммами
+Стек	WordPress · Elementor Pro · HTML/CSS/JS
+Особенности	Интерактивный каталог · Mouse Effects
+Статус	✅ Сдан клиенту
+</div>
+📊 Цифры и факты
+<div align="center">
+📈 15+	💯 100%	⏱️ 5 дней	🔒 24/7
 проектов	довольных клиентов	средний срок	на поддержке
 </div>
-🎯 Что я умею
-Telegram-боты
-Создание ботов с нуля на aiogram 3.x
-
-Машина состояний (FSM)
-
-Инлайн-клавиатуры, календари
-
-Интеграция с Google Sheets, CRM, внешними API
-
-Веб-разработка
-Лендинги с анимациями и калькуляторами
-
-Адаптивная вёрстка (Mobile-first)
-
-Мультиязычность (i18n)
-
-WordPress + Elementor + WooCommerce
-
-Автоматизация
-Парсинг сайтов
-
-Обработка Excel и Google Таблиц
-
-Десктопные приложения (PyQt)
-
-📌 Почему я
-🔹	Преимущество
-🚀	Скорость — средний срок выполнения 3–7 дней
-💎	Качество — чистый код, премиум-дизайн
-💬	Коммуникация — всегда на связи, ежедневные отчёты
+💎 Мои преимущества
+<div align="center">
+Преимущество
+🚀	Скорость — работаю в 2–3 раза быстрее среднего
+💎	Качество — чистый код, продуманный UX
+💬	Коммуникация — всегда на связи, отчёты каждый день
 🛡️	Гарантия — 14 дней бесплатной поддержки
-💰	Цена — фиксированная, без скрытых платежей
+💰	Цена — фиксированная, без сюрпризов
+</div>
+🎯 Что я делаю лучше всего
+<div align="center"> <table> <tr> <td>🤖 <strong>Telegram-боты</strong></td> <td>Запись клиентов, рассылки, поддержка, AI-интеграции</td> </tr> <tr> <td>🌐 <strong>Лендинги и сайты</strong></td> <td>Адаптив, анимации, калькуляторы, мультиязычность</td> </tr> <tr> <td>⚡ <strong>Автоматизация</strong></td> <td>Парсинг, обработка данных, десктопные приложения</td> </tr> <tr> <td>🧠 <strong>AI-инструменты</strong></td> <td>Генераторы контента, NLP-решения</td> </tr> </table> </div>
+📌 Открыт к сотрудничеству
+Ищу проекты по направлению:
+
+🤖 AI-боты и чат-боты
+
+🌐 Веб-разработка
+
+⚡ Автоматизация и скрипты
+
+🧠 AI-инструменты для бизнеса
+
+Готов к разовым заказам и долгосрочному партнёрству.
+
 📱 Связь со мной
-Telegram: @n0vacode
-
-Портфолио: novacode-nu.vercel.app
-
-Email: stepchikcrypto@gmail.com
-
-GitHub: TsDead
-
-🤝 Открыт к сотрудничеству
-Ищу проекты по:
-
-🤖 Telegram-ботам с AI
-
-🌐 Лендингам и сайтам
-
-⚡ Автоматизации и скриптам
-
-🧠 AI-инструментам для бизнеса
-
-Готов к долгосрочному сотрудничеству и разовым заказам.
-
-<div align="center"> <sub>© 2025 NOVACODE — Сделано с ❤ и ☕</sub> </div>
+<div align="center"><a href="https://novacode-nu.vercel.app/"> <img src="https://img.shields.io/badge/🌐-Портфолио-00E5C7?style=for-the-badge" alt="Portfolio"/> </a> <a href="https://t.me/n0vacode"> <img src="https://img.shields.io/badge/✈️-Telegram-0088cc?style=for-the-badge" alt="Telegram"/> </a> <a href="mailto:stepchikcrypto@gmail.com"> <img src="https://img.shields.io/badge/📧-Email-red?style=for-the-badge" alt="Email"/> </a></div>
+<div align="center"> <sub>© 2025 <strong>NOVACODE</strong> — Сделано с ❤ и ☕</sub> </div>
