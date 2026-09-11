@@ -1,10 +1,24 @@
+/* Дизайн-система сгенерирована скиллом ui-ux-pro-max (design-system),
+   моушен/easing — по скиллу animate. Тёмный glass-вариант. */
+
 :root {
-  --bg: #0e0b1a;
+  /* Семантические токены (по ui-ux-pro-max, адаптированы под тёмную тему) */
+  --color-primary: #2563eb;
+  --color-secondary: #7c3aed;
+  --color-accent: #ec4899;
+
+  --bg: #0b0a14;
+  --bg-elev: rgba(255, 255, 255, 0.05);
   --card: rgba(255, 255, 255, 0.06);
   --card-border: rgba(255, 255, 255, 0.12);
-  --text: #f4f2ff;
-  --muted: #a79fce;
-  --accent: #7c5cff;
+  --foreground: #f4f2ff;
+  --muted-foreground: #a79fce;
+  --ring: var(--color-accent);
+
+  /* Easing (скилл animate) */
+  --ease-out-quint: cubic-bezier(.23, 1, .32, 1);
+  --ease-out-cubic: cubic-bezier(.33, 1, .68, 1);
+  --ease-back: cubic-bezier(.34, 1.56, .64, 1); /* back.out — лёгкий овершут */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -12,8 +26,8 @@
 html, body { height: 100%; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: var(--text);
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  color: var(--foreground);
   background: var(--bg);
   display: flex;
   align-items: center;
@@ -23,15 +37,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Живой градиентный фон */
+/* Живой градиентный фон из бренд-цветов дизайн-системы */
 .bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(600px circle at 20% 15%, rgba(124, 92, 255, 0.35), transparent 45%),
-    radial-gradient(700px circle at 85% 85%, rgba(255, 92, 168, 0.25), transparent 50%),
-    radial-gradient(500px circle at 80% 10%, rgba(60, 180, 255, 0.22), transparent 45%);
+    radial-gradient(600px circle at 20% 15%, rgba(124, 58, 237, 0.38), transparent 45%),
+    radial-gradient(700px circle at 85% 85%, rgba(236, 72, 153, 0.28), transparent 50%),
+    radial-gradient(520px circle at 80% 10%, rgba(37, 99, 235, 0.30), transparent 45%);
   animation: drift 18s ease-in-out infinite alternate;
 }
 
@@ -51,7 +65,7 @@ body {
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   text-align: center;
-  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: rise 0.6s var(--ease-out-quint) both;
 }
 
 @keyframes rise {
@@ -65,8 +79,8 @@ body {
   margin: 0 auto 18px;
   border-radius: 50%;
   padding: 3px;
-  background: linear-gradient(135deg, var(--accent), #ff5ca8);
-  box-shadow: 0 8px 30px rgba(124, 92, 255, 0.5);
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
 }
 
 .avatar {
@@ -79,13 +93,14 @@ body {
 }
 
 .name {
-  font-size: 26px;
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
 .tagline {
-  color: var(--muted);
+  color: var(--muted-foreground);
   font-size: 14px;
   margin: 6px 0 28px;
 }
@@ -102,18 +117,44 @@ body {
   gap: 14px;
   padding: 14px 18px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-elev);
   border: 1px solid var(--card-border);
-  color: var(--text);
+  color: var(--foreground);
   text-decoration: none;
   font-weight: 500;
-  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  cursor: pointer;
+  transition: transform 200ms var(--ease-out-quint),
+              background 200ms var(--ease-out-quint),
+              border-color 200ms var(--ease-out-quint),
+              box-shadow 200ms var(--ease-out-quint);
+  /* Staggered появление (скилл animate: enter ~300ms ease-out + back overshoot) */
+  opacity: 0;
+  animation: linkIn 420ms var(--ease-back) forwards;
+}
+
+.link:nth-child(1) { animation-delay: 0.15s; }
+.link:nth-child(2) { animation-delay: 0.22s; }
+.link:nth-child(3) { animation-delay: 0.29s; }
+
+@keyframes linkIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.1);
-  border-color: var(--accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 28px rgba(236, 72, 153, 0.18);
+}
+
+/* Button-press (скилл animate) */
+.link:active { transform: translateY(-1px) scale(0.98); }
+
+/* Видимый фокус для клавиатуры (a11y — приоритет 1 в ui-ux-pro-max) */
+.link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
 }
 
 .link .icon {
@@ -131,7 +172,7 @@ body {
 .link .arrow {
   opacity: 0.5;
   font-size: 15px;
-  transition: transform 0.18s ease, opacity 0.18s ease;
+  transition: transform 200ms var(--ease-out-quint), opacity 200ms var(--ease-out-quint);
 }
 
 .link:hover .arrow { opacity: 1; transform: translate(2px, -2px); }
@@ -142,6 +183,17 @@ body {
 
 .foot {
   margin-top: 26px;
-  color: var(--muted);
+  color: var(--muted-foreground);
   font-size: 12px;
+}
+
+/* Уважать prefers-reduced-motion (скилл animate + чек-лист ui-ux-pro-max) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .link { opacity: 1; }
+  .bg { animation: none; }
 }
